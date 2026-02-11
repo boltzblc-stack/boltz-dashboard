@@ -1,91 +1,96 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOLTz Int. - Dashboard de Mercado</title>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<style>
-body { margin:0; font-family:Arial; background:#0a1f44; color:white; text-align:center; }
-header { background:linear-gradient(90deg,#0a1f44,#ff6b00); padding:20px; font-size:26px; font-weight:bold; }
-.container { width:90%; max-width:1100px; margin:auto; padding:20px; }
-.card { background:#102b5c; padding:20px; margin:25px 0; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.4); }
-canvas { background:white; border-radius:10px; padding:10px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Research Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .tab-content { padding: 15px; border: 1px solid #ddd; border-top: none; }
+        .accordion-item { margin-bottom: 10px; }
+    </style>
 </head>
-
 <body>
-
-<header>BOLTz Int. - Dashboard de Pesquisa de Mercado</header>
-
-<div class="container">
-
-<div class="card">
-<h2>Interesse de Compra (%)</h2>
-<canvas id="interesse"></canvas>
-</div>
-
-<div class="card">
-<h2>Fatores de Decisão (%)</h2>
-<canvas id="fatores"></canvas>
-</div>
-
-<div class="card">
-<h2>Faixa Etária dos Respondentes (%)</h2>
-<canvas id="idade"></canvas>
-</div>
-
-<div class="card">
-<h2>Disposição a Pagar (R$)</h2>
-<canvas id="preco"></canvas>
-</div>
-
-</div>
-
-<script>
-
-new Chart(document.getElementById("interesse"), {
-type:"pie",
-data:{
-labels:["Sim","Talvez","Não"],
-datasets:[{data:[68,22,10],
-backgroundColor:["#ff6b00","#1e90ff","#0a1f44"]}]}
-});
-
-new Chart(document.getElementById("fatores"), {
-type:"bar",
-data:{
-labels:["Qualidade","Preço","Marca","Design"],
-datasets:[{label:"% de Preferência",
-data:[40,30,15,15],
-backgroundColor:"#ff6b00"}]},
-options:{scales:{y:{beginAtZero:true,max:50}}}
-});
-
-new Chart(document.getElementById("idade"), {
-type:"doughnut",
-data:{
-labels:["16-20","21-25","26-30","31-35"],
-datasets:[{data:[25,35,25,15],
-backgroundColor:["#ff6b00","#0a1f44","#1e90ff","#ffaa33"]}]}
-});
-
-new Chart(document.getElementById("preco"), {
-type:"line",
-data:{
-labels:["R$150","R$200","R$250","R$300","R$350"],
-datasets:[{label:"Intenção de Compra (%)",
-data:[20,45,70,50,30],
-borderColor:"#ff6b00",
-backgroundColor:"rgba(255,107,0,0.2)",
-fill:true,
-tension:0.4}]},
-options:{scales:{y:{beginAtZero:true,max:100}}}
-});
-
-</script>
-
+    <div class="container mt-5">
+        <h1 class="text-center">Market Research Dashboard</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Chart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Accordion</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <h2>Welcome to the Dashboard</h2>
+                <p>This dashboard provides insightful data on market research.</p>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <h2>Market Trends Chart</h2>
+                <canvas id="myChart" width="400" height="200"></canvas>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <h2>Accordion Example</h2>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Accordion Item #1
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                This is the first item's accordion body.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Accordion Item #2
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                This is the second item's accordion body.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Market Trends',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
