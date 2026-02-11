@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOLTz Int. - Dashboard de Mercado</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body { margin:0; font-family:Arial; background:#0a1f44; color:white; text-align:center; }
+header { background:linear-gradient(90deg,#0a1f44,#ff6b00); padding:20px; font-size:26px; font-weight:bold; }
+.container { width:90%; max-width:1100px; margin:auto; padding:20px; }
+.card { background:#102b5c; padding:20px; margin:25px 0; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.4); }
+canvas { background:white; border-radius:10px; padding:10px; }
+</style>
+</head>
+
+<body>
+
+<header>BOLTz Int. - Dashboard de Pesquisa de Mercado</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Interesse de Compra (%)</h2>
+<canvas id="interesse"></canvas>
+</div>
+
+<div class="card">
+<h2>Fatores de Decisão (%)</h2>
+<canvas id="fatores"></canvas>
+</div>
+
+<div class="card">
+<h2>Faixa Etária dos Respondentes (%)</h2>
+<canvas id="idade"></canvas>
+</div>
+
+<div class="card">
+<h2>Disposição a Pagar (R$)</h2>
+<canvas id="preco"></canvas>
+</div>
+
+</div>
+
+<script>
+
+new Chart(document.getElementById("interesse"), {
+type:"pie",
+data:{
+labels:["Sim","Talvez","Não"],
+datasets:[{data:[68,22,10],
+backgroundColor:["#ff6b00","#1e90ff","#0a1f44"]}]}
+});
+
+new Chart(document.getElementById("fatores"), {
+type:"bar",
+data:{
+labels:["Qualidade","Preço","Marca","Design"],
+datasets:[{label:"% de Preferência",
+data:[40,30,15,15],
+backgroundColor:"#ff6b00"}]},
+options:{scales:{y:{beginAtZero:true,max:50}}}
+});
+
+new Chart(document.getElementById("idade"), {
+type:"doughnut",
+data:{
+labels:["16-20","21-25","26-30","31-35"],
+datasets:[{data:[25,35,25,15],
+backgroundColor:["#ff6b00","#0a1f44","#1e90ff","#ffaa33"]}]}
+});
+
+new Chart(document.getElementById("preco"), {
+type:"line",
+data:{
+labels:["R$150","R$200","R$250","R$300","R$350"],
+datasets:[{label:"Intenção de Compra (%)",
+data:[20,45,70,50,30],
+borderColor:"#ff6b00",
+backgroundColor:"rgba(255,107,0,0.2)",
+fill:true,
+tension:0.4}]},
+options:{scales:{y:{beginAtZero:true,max:100}}}
+});
+
+</script>
+
+</body>
+</html>
